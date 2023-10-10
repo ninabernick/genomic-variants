@@ -10,10 +10,9 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
     "plugin:react/jsx-runtime",
+    "prettier",
   ],
   overrides: [
     // Override some TypeScript rules just for .js files
