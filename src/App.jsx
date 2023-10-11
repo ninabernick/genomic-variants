@@ -1,11 +1,10 @@
 /* eslint-disable no-debugger */
-import Papa from 'papaparse';
 import logo from './logo.svg';
-import './App.css';
+import cs from './App.css';
 import React from "react";
-import { parseCSVToJSON } from './utils/parse_csv';
+import { parseTSVtoJSON } from './utils/parse_csv';
 import { sampleData } from './utils/sample_data';
-import { ComplexFilter, Dropdown } from '@czi-sds/components';
+import {  Dropdown, Icon } from '@czi-sds/components';
 
 const App = () =>  {
   const [data, setData] = React.useState([]);
@@ -15,35 +14,23 @@ const App = () =>  {
   // initial load
   React.useEffect(() => {
     async function fetchData() {
-      fetch("/sample_data.tsv")
-        .then((response) => response.text())
-        .then(
-          (data) => {
-            console.log(data);
-            const parsed_tsv = Papa.parse(data, {
-              header: true, // Treat the first row as the header
-              dynamicTyping: true, // Automatically detect data types
-              skipEmptyLines: true, // Skip empty lines
-              delimiter: "\t",
-            }).data;
-            setData(parsed_tsv);
-            setFilteredData(parsed_tsv);
-          }
-        )
-      // const jsonResults = await parseCSVToJSON();
-      // debugger;
-      // setData(jsonResults);
-      // setFilteredData(jsonResults);
+      try {
+        const response = await fetch("/sample_data.tsv");
+        const tsvText = await response.text();
+        const parsedData = parseTSVtoJSON(tsvText);
+
+        setData(parsedData);
+        setFilteredData(parsedData);
+      } catch (error) {
+        console.error(error);
+      }
     }
-    // const jsonResults = sampleData;
     fetchData();
-    // setData(jsonResults);
-    // setFilteredData(jsonResults);
   }, []);
 
   const filterDataByTranscript = (value) => {
     const filteredData = data?.filter(row => row.transcript_id === value);
-    //setFilteredData(filteredData);
+    setFilteredData(filteredData);
     setSelectedTranscript(value);
   };
 
@@ -51,13 +38,16 @@ const App = () =>  {
     filterDataByTranscript(option?.name)
   };
 
-
-  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+      <div>
+        <Icon
+          sdsIcon="dna"
+          sdsSize="xl"
+          sds
+        />
+        <span className={cs.title}>Genomic Variants</span>
+      </div>
       <Dropdown
           InputDropdownProps={{
             intent: "default",
