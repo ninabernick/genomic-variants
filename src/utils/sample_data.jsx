@@ -1,0 +1,26 @@
+export const sampleData = [
+  {
+    chrom: "chr1",
+    pos: "69094",
+    ref: "G",
+    alt: "T",
+    genome: "hg38",
+    uniprot_id: "Q8NH21",
+    transcript_id: "ENST00000335137.4",
+    protein_variant: "V2L",
+    am_pathogenicity: 0.2937,
+    am_class: "likely_benign",
+  },
+  {
+    chrom: "chr1",
+    pos: "69094",
+    ref: "G",
+    alt: "A",
+    genome: "hg38",
+    uniprot_id: "Q8NH21",
+    transcript_id: "ENST00000335137.5",
+    protein_variant: "V2M",
+    am_pathogenicity: 0.3296,
+    am_class: "likely_benign",
+  },
+]
