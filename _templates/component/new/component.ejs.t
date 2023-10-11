@@ -1,14 +1,11 @@
 ---
-to: <%= path %>/<%= name %>/<%= name %>.tsx
+to: <%= path %>/<%= name %>/<%= name %>.jsx
 ---
-import { StyledWrapper } from "./<%= h.inflection.underscore(name, false)%>_style";
+import React from "react";
+import cs from "./<%= h.inflection.underscore(name, false)%>.scss";
 
-interface <%= name %>Props {
-  // define types here
-}
-
-export const <%= name %> = ({}: <%= name %>Props) => {
+export const <%= name %> = () => {
   return (
-    <StyledWrapper>Your new component</StyledWrapper>
+    <div className={cs.wrapper}>Your new component</div>
   );
 };

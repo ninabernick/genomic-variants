@@ -1,0 +1,4 @@
+CHROM	POS	REF	ALT	genome	uniprot_id	transcript_id	protein_variant	am_pathogenicity	am_class	curated_class	gene_name	disease_name	mondo_ID
+chrX	152990256	G	C	hg38	Q96PV4	ENST00000439251.3	T448R	0.0914	likely_benign	VUS no clinical info provided (266)	ABCD1	Adrenoleukodystrophy	MONDO:0018544
+chrX	152990271	G	T	hg38	Q96PV4	ENST00000439251.3	P443H	0.4303	ambiguous	VUS no clinical info provided (266)	ABCD1	Adrenoleukodystrophy	MONDO:0018544
+chrX	152990276	G	C	hg38	Q96PV4	ENST00000439251.3	S441R	0.7986	likely_pathogenic	Pathogenic no clinical info presented but deleterious mutation (266)	ABCD1	Adrenoleukodystrophy	MONDO:0018544

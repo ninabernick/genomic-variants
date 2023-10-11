@@ -1,5 +1,5 @@
 ---
-to: <%= path %>/<%= name %>/index.tsx
+to: <%= path %>/<%= name %>/index.jsx
 ---
 import { <%= name %> } from "./<%= name %>";
 export { <%= name %> };
